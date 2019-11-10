@@ -10,4 +10,4 @@ Initialized with the following command using Rails `6.0.1`:
 rails new rails-vue-template --skip-turbolinks --webpack=vue
 ```
 
-Update instances of `RailsVueTemplate` and `rails_vue_template` to reflect the name of the application.
+Update instances of `RailsVueTemplate`, `rails_vue_template`, and `rails-vue-template` to reflect the name of the application.
