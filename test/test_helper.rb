@@ -11,11 +11,26 @@ require 'minitest/reporters'
 require 'minitest/reporters/ordered_spec_reporter'
 require 'minitest_autoskip'
 
-Minitest::Reporters.use! Minitest::Reporters::OrderedSpecReporter.new
+Minitest::Reporters.use! Minitest::Reporters::OrderedSpecReporter.new({
+  loose: true,
+  truncate: true,
+})
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
   parallelize(workers: :number_of_processors)
+
+  # parallelize compatibility with simplecov
+  # https://github.com/colszowka/simplecov/issues/718
+  unless ENV['NO_COVERAGE']
+    parallelize_setup do |worker|
+      SimpleCov.command_name "#{ SimpleCov.command_name }-#{ worker }"
+    end
+
+    parallelize_teardown do |worker|
+      SimpleCov.result
+    end
+  end
 
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
