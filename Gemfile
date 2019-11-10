@@ -43,6 +43,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 
   gem 'foreman'
+  gem 'guard'
+  gem 'guard-minitest'
 end
 
 group :test do
@@ -51,6 +53,13 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+
+  gem 'minitest-rails'
+  gem 'minitest-reporters'
+  gem 'minitest-reporters-ordered_spec_reporter'
+  gem 'minitest_autoskip'
+  gem 'simplecov', require: false
+  gem 'rails-controller-testing'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
